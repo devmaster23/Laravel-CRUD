@@ -1,0 +1,65 @@
+<section class="content-header">
+  <h1>
+    Form Submit
+    <small>Call Rest Api</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">From Submit</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Form Submit</h3>
+        </div>
+        <form class="form-horizontal" name="apiForm" ng-submit="vm.submit(apiForm.$valid, apiForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': apiForm.survey.$invalid && ( vm.formSubmitted || apiForm.survey.$touched) }">
+              <label for="survey" class="col-sm-3 control-label">Survey</label>
+              <div class="col-sm-9">
+                <select class="form-control" ng-model="vm.surveys.selected"  ng-change="vm.getSurveyQuestions()">
+                  <option ng-value="item.id" ng-selected="item.id == vm.surveys.selected" ng-repeat="item in vm.surveys.list">{{item.id}}-{{item.title}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': apiForm.survey_type.$invalid && ( vm.formSubmitted || apiForm.survey_type.$touched) }">
+              <label for="survey_type" class="col-sm-3 control-label">Survey Type</label>
+              <div class="col-sm-9">
+                <select class="form-control" ng-model="vm.surveyType.selected">
+                  <option ng-value="item.id" ng-selected="item.id == vm.surveyType.selected" ng-repeat="item in vm.surveyType.list">{{item.title}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': apiForm.customer.$invalid && ( vm.formSubmitted || apiForm.customer.$touched) }">
+              <label for="customer" class="col-sm-3 control-label">Customer</label>
+              <div class="col-sm-9">
+                <select class="form-control" ng-model="vm.customers.selected">
+                  <option ng-value="item.id" ng-selected="item.id == vm.customers.selected" ng-repeat="item in vm.customers.list">{{item.id}}-{{item.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': apiForm.voiceType.$invalid && ( vm.formSubmitted || apiForm.voiceType.$touched) }">
+              <label for="voice_type" class="col-sm-3 control-label">Voice Type</label>
+              <div class="col-sm-9">
+                <select class="form-control" ng-model="vm.voiceType.selected">
+                  <option ng-value="item.id" ng-selected="item.id == vm.voiceType.selected" ng-repeat="item in vm.voiceType.list">{{item.title}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

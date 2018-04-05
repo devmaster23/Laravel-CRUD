@@ -1,0 +1,45 @@
+<section class="content-header">
+  <h1>Survey List<small>add module</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.survey-list">Survey Lists</a></li>
+    <li class="active">Add Survey List</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add Survey List</h3>
+        </div>
+        <form class="form-horizontal" name="surveyListForm" ng-submit="vm.save(surveyListForm.$valid, surveyListForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': surveyListForm.title.$invalid && ( vm.formSubmitted || surveyListForm.title.$touched) }">
+              <label for="title" class="col-sm-2 control-label">Title</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="vm.title" name="title" placeholder="Title" required>
+                <p ng-show="surveyListForm.title.$error.required && ( vm.formSubmitted || surveyListForm.title.$touched)" class="help-block">Title is required.</p>
+              </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': surveyListForm.questions.$invalid && ( vm.formSubmitted || surveyListForm.questions.$touched) }">
+              <label for="questions" class="col-sm-2 control-label">Questions</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="3" ng-model="vm.questions" name="questions" placeholder="Questions" required></textarea>
+                <p ng-show="surveyListForm.questions.$error.required && ( vm.formSubmitted || surveyListForm.questions.$touched)" class="help-block">Title is required.</p>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.survey-list" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Back</a>
+            <button type="submit" class="btn btn-primary pull-right">Add New</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

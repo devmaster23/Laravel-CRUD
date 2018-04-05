@@ -1,0 +1,63 @@
+<section class="content-header">
+  <h1>Customer<small>add</small></h1>
+  <ol class="breadcrumb">
+    <li><a ui-sref="app.landing"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a ui-sref="app.customer">Customers</a></li>
+    <li class="active">Add Customer</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add Customer</h3>
+        </div>
+        <form class="form-horizontal" name="customerForm" ng-submit="vm.save(customerForm.$valid, customerForm)" novalidate>
+          <div class="box-body">
+            <div ng-if="vm.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vm.alerts">
+              <h4>{{alert.title}}</h4>
+              <p>{{alert.msg}}</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': customerForm.name.$invalid && ( vm.formSubmitted || customerForm.name.$touched) }">
+              <label for="title" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="vm.name" name="name" placeholder="Name" required>
+                <p ng-show="customerForm.name.$error.required && ( vm.formSubmitted || customerForm.name.$touched)" class="help-block">Name is required.</p>
+              </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': customerForm.date_of_birth.$invalid && ( vm.formSubmitted || customerForm.date_of_birth.$touched) }">
+              <label for="title" class="col-sm-2 control-label">DOB</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" ng-model="vm.date_of_birth" name="date_of_birth" placeholder="DOB" required>
+                <p ng-show="customerForm.date_of_birth.$error.required && ( vm.formSubmitted || customerForm.date_of_birth.$touched)" class="help-block">DOB is required.</p>
+              </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': customerForm.subscription_start_date.$invalid && ( vm.formSubmitted || customerForm.subscription_start_date.$touched) }">
+              <label for="title" class="col-sm-2 control-label">Start Date</label>
+              <div class="col-sm-10">
+                <input type="datetime-local" class="form-control" ng-model="vm.subscription_start_date" name="subscription_start_date" placeholder="DOB" required>
+                <p ng-show="customerForm.subscription_start_date.$error.required && ( vm.formSubmitted || customerForm.subscription_start_date.$touched)" class="help-block">Date is required.</p>
+              </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': customerForm.phone.$invalid && ( vm.formSubmitted || customerForm.phone.$touched) }">
+              <label for="title" class="col-sm-2 control-label">Phone</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" ng-model="vm.phone" name="phone" placeholder="Phone" required>
+                <p ng-show="customerForm.phone.$error.required && ( vm.formSubmitted || customerForm.phone.$touched)" class="help-block">Phone is required.</p>
+              </div>
+            </div>
+            
+          </div>
+          <div class="box-footer">
+            <a ui-sref="app.customer" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Back</a>
+            <button type="submit" class="btn btn-primary pull-right">Add New</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
