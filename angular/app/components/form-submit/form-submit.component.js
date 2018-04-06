@@ -1,10 +1,11 @@
 class FormSubmitController{
-    constructor($stateParams, $state, $http, API){
+    constructor($stateParams, $state, $http, API, $httpParamSerializer){
         'ngInject';
 
         //
         this.$state = $state
         this.$http = $http
+        this.$httpParamSerializer = $httpParamSerializer
         this.formSubmitted = false
         this.alerts = []
 
@@ -168,12 +169,6 @@ class FormSubmitController{
                 "voice_type": this.voiceType.selected
             }
 
-            var config = {
-                headers : {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                }
-            }
-
             var api_url = "http://ec2-54-86-148-158.compute-1.amazonaws.com:9001/start_call";
             if(this.surveyType.selected != 'voice')
                 api_url = "http://ec2-54-86-148-158.compute-1.amazonaws.com:9001/start_sms";
@@ -192,13 +187,11 @@ class FormSubmitController{
                 $http({
                     method: "POST",
                     url: api_url,
-                    dataType: 'json',
-                    data: this.jsonPayload,
+                    data: that.jsonPayload,
                     headers: { 
+                        'Content-Type': 'application/json',
                         'Access-Control-Allow-Origin' : '*',
                         'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
                     }
                 })
                 .success(function (data, status) {
