@@ -165,12 +165,12 @@ class SurveyController extends Controller
     }
 
     public function getFeedbacks(){
-        $feedback_list = SurveyFeedback::orderBy('survey_id','asc')->get();
+        $feedback_list = SurveyFeedback::orderBy('id','asc')->get();
         return response()->success($feedback_list);        
     }
 
     public function getTranscripts(){
-        $transcript_list = SurveyTranscript::orderBy('call_id','asc')->get();
+        $transcript_list = SurveyTranscript::orderBy('id','asc')->get();
         return response()->success($transcript_list);        
     }
 }
