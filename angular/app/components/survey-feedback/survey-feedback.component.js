@@ -17,6 +17,7 @@ class SurveyFeedbackController{
           .withBootstrap()
 
         this.dtColumns = [
+          DTColumnBuilder.newColumn('id').withTitle('ID'),
           DTColumnBuilder.newColumn('call_datetime').withTitle('call_datetime'),
           DTColumnBuilder.newColumn('call_id').withTitle('call_id'),
           DTColumnBuilder.newColumn('customer_id').withTitle('customer_id'),

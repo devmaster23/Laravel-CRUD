@@ -17,6 +17,7 @@ class SurveyTranscriptController{
           .withBootstrap()
 
         this.dtColumns = [
+          DTColumnBuilder.newColumn('id').withTitle('ID'),
           DTColumnBuilder.newColumn('call_id').withTitle('call_id'),
           DTColumnBuilder.newColumn('question_no').withTitle('question_no'),
           DTColumnBuilder.newColumn('recording_url').withTitle('recording_url'),
