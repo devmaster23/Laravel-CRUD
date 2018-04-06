@@ -20,9 +20,10 @@ class CustomerAddController{
 
         Customer.post({
           'name': this.name,
+          'lastname': this.lastname,
           'date_of_birth': this.date_of_birth,
           'subscription_start_date': this.subscription_start_date,
-          'phone': this.phone,
+          'phone': this.phone
         }).then(function () {
           let alert = { type: 'success', 'title': 'Success!', msg: 'Customer has been added.' }
           $state.go($state.current, { alerts: alert})

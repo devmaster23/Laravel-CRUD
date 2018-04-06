@@ -174,6 +174,10 @@ class FormSubmitController{
                 }
             }
 
+            var api_url = "http://ec2-54-86-148-158.compute-1.amazonaws.com:9001/start_call";
+            if(this.surveyType.selected != 'voice')
+                api_url = "http://ec2-54-86-148-158.compute-1.amazonaws.com:9001/start_sms";
+
             swal({
               title: 'Are you sure?',
               text: JSON.stringify(this.jsonPayload),
@@ -187,7 +191,7 @@ class FormSubmitController{
             }, function () {
                 $http({
                     method: "POST",
-                    url: "http://ec2-34-237-137-34.compute-1.amazonaws.com:9001/start_call",
+                    url: api_url,
                     dataType: 'json',
                     data: this.jsonPayload,
                     headers: { 

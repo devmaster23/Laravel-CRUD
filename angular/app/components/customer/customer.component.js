@@ -18,7 +18,8 @@ class CustomerController{
 
             this.dtColumns = [
               DTColumnBuilder.newColumn('id').withTitle('ID'),
-              DTColumnBuilder.newColumn('name').withTitle('Name'),
+              DTColumnBuilder.newColumn('name').withTitle('First Name'),
+              DTColumnBuilder.newColumn('lastname').withTitle('Last Name'),
               DTColumnBuilder.newColumn('date_of_birth').withTitle('DOB'),
               DTColumnBuilder.newColumn('subscription_start_date').withTitle('Subscription Date'),
               DTColumnBuilder.newColumn('phone').withTitle('Phone Number'),

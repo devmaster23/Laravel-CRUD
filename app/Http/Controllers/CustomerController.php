@@ -45,6 +45,7 @@ class CustomerController extends Controller
         $CustomerForm = Input::get('data');
         $CustomerData = [
             'name' => $CustomerForm['name'],
+            'lastname' => $CustomerForm['lastname'],
             'date_of_birth' => $CustomerForm['date_of_birth'],
             'subscription_start_date' => $CustomerForm['subscription_start_date'],
             'phone' => $CustomerForm['phone'],
@@ -64,6 +65,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::create([
             'name' => Input::get('name'),
+            'lastname' => Input::get('lastname'),
             'date_of_birth' => Input::get('date_of_birth'),
             'subscription_start_date' => Input::get('subscription_start_date'),
             'phone' => Input::get('phone'),
