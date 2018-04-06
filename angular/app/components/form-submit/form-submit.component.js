@@ -184,16 +184,7 @@ class FormSubmitController{
               showLoaderOnConfirm: true,
               html: false
             }, function () {
-                $http({
-                    method: "POST",
-                    url: api_url,
-                    data: that.jsonPayload,
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin' : '*',
-                        'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
-                    }
-                })
+                $http.post(api_url,that.jsonPayload)
                 .success(function (data, status) {
                     swal({
                         title: 'Success!',
